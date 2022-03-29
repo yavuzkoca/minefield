@@ -1,0 +1,11 @@
+.cell {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: $LIGHT_GRAY;
+  margin: 0;
+
+  &:not(:first-child) {
+    margin-left: 2px;
+  }
+}

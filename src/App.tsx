@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/main.scss';
+import {Cell} from './components/Cell/Cell';
+import {useBoard} from './hocs/board';
 
 function App() {
+  const {board} = useBoard();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="board">
+      {board.map((row, i) => (
+        <div className="row" key={i.toString()}>
+          {row.map((cell, j) => (
+            <React.Fragment key={j.toString()}>
+              <Cell
+                status={cell.status}
+                hasMine={cell.hasMine}
+                neighborhoodMineCount={cell.neighborhoodMineCount}
+              />
+            </React.Fragment>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
