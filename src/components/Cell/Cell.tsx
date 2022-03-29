@@ -10,5 +10,5 @@ export enum CellStatus {
 export const Cell = (props: CellProps) => {
   const {neighborhoodMineCount, hasMine, status} = props;
 
-  return <div className="cell" />;
+  return <div className="cell">{neighborhoodMineCount}</div>;
 };
